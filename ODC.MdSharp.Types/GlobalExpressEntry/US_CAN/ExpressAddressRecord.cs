@@ -2,8 +2,8 @@
 
 namespace ODC.MdSharp.Types.GlobalExpressEntry.US_CAN
 {
-    /// <param name="AddressSuggestions"></param>
-    public record ExpressAddressRecord(ExpressAddressRecord.Address[] AddressSuggestions)
+    /// <param name="AddressSuggestion"></param>
+    public record ExpressAddressRecord(ExpressAddressRecord.Address AddressSuggestion)
     {
         /// <param name="FormattedAddress"></param>
         /// <param name="City"></param>
