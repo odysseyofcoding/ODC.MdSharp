@@ -22,4 +22,8 @@
 		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Folder Include="GlobalCloudServices\" />
+	  <Folder Include="NorthAmericaCloudServices\" />
+	</ItemGroup>
 </Project>
