@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ODC.MdSharpTests.DummyData
+﻿namespace ODC.MdSharpTests.DummyData
 {
     /// <summary>
     /// 100 records

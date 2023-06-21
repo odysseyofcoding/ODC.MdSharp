@@ -1,6 +1,5 @@
 using ODC.MdSharp.Types.GlobalExpressEntry;
 using ODC.MdSharp.Types.GlobalExpressEntry.Global;
-using System.Diagnostics;
 using System.Text.Json;
 
 namespace ODC.MdSharpTests
