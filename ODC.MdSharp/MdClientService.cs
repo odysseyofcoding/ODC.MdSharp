@@ -18,10 +18,11 @@ namespace ODC.MdSharp
         /// <summary>
         /// ToDo: Research for a web resource to fetch up to date URIs
         /// </summary>
-        public MdClientService(IHttpClientFactory clientFactory, string typedClient, CancellationToken ctx)
+        public MdClientService(IHttpClientFactory clientFactory, string id, string typedClient, CancellationToken ctx)
         {
             this.client = clientFactory.CreateClient(typedClient);
             this.cts = CancellationTokenSource.CreateLinkedTokenSource(ctx);
+            this.id = id;
         }
         /// <summary>
         /// 
@@ -36,7 +37,7 @@ namespace ODC.MdSharp
 
             try
             {
-                responseMessage = await client.GetAsync(query);
+                responseMessage = await client.GetAsync(query, HttpCompletionOption.ResponseHeadersRead, CancellationToken.None);
             }
             catch (Exception ex)
             {
