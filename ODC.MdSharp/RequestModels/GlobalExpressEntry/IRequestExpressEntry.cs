@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace ODC.MdSharp.RequestModels.GlobalExpressEntry
+﻿namespace ODC.MdSharp.RequestModels.GlobalExpressEntry
 {
     /// <summary>
     /// To keep Requests easier apart

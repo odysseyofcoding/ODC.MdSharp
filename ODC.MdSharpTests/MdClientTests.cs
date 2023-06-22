@@ -1,19 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ODC.MdSharp;
-using Polly.Extensions.Http;
-using Polly;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ODC.MdSharp.RequestModels.GlobalExpressEntry;
+using Polly;
+using Polly.Extensions.Http;
 using static ODC.MdSharp.RequestModels.GlobalExpressEntry.ExpressRequest.GlobalRequestAddressModel;
-using System.Net.Http.Json;
-using ODC.MdSharp.Types.GlobalExpressEntry.Global;
-using ODC.MdSharp.Types.GlobalExpressEntry;
 
 namespace ODC.MdSharpTests
 {

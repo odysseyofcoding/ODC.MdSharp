@@ -20,7 +20,7 @@ namespace ODC.MdSharp.Types.GlobalExpressEntry.Global
         /// <param name="UPRN">The Unique Property Reference Number issued by Royal Mail. This is a number unique to each address in GB. This is a unique number up to 12-digits long.</param>
         /// <param name="AddrObjectResultCode">When set to results this will return the Address Object result codes for each address in the Extras field. For example, a USPS only address will return "AddrObjectResultCode": "AS01"</param>
         public record Extras(string? UDPRN, string? UPRN, string? AddrObjectResultCode);
-        
+
         /// <summary>
         /// Single AddressSugestion
         /// </summary>
