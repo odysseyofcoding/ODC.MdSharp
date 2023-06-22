@@ -41,7 +41,7 @@
         }
 
         /// <summary/>
-        public class GlobalRequestAddressModel : IRequestExpressEntry
+        public class GlobalRequestAddressModel
         {
             /// <summary/>
             public enum ValidFormats

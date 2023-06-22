@@ -25,4 +25,7 @@
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\ODC.MdSharp.Types\ODC.MdSharp.Types.csproj" />
+	</ItemGroup>
 </Project>

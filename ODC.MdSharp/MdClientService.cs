@@ -1,4 +1,7 @@
 ﻿using ODC.MdSharp.RequestModels.GlobalExpressEntry;
+using ODC.MdSharp.Types.GlobalExpressEntry;
+using ODC.MdSharp.Types.GlobalExpressEntry.Global;
+using System.Net.Http.Json;
 using System.Reflection;
 using System.Text;
 
@@ -18,9 +21,9 @@ namespace ODC.MdSharp
         /// <summary>
         /// ToDo: Research for a web resource to fetch up to date URIs
         /// </summary>
-        public MdClientService(IHttpClientFactory clientFactory, string id, string typedClient, CancellationToken ctx)
+        public MdClientService(IHttpClientFactory clientFactory, string id, CancellationToken ctx)
         {
-            this.client = clientFactory.CreateClient(typedClient);
+            this.client = clientFactory.CreateClient("expressEntry");
             this.cts = CancellationTokenSource.CreateLinkedTokenSource(ctx);
             this.id = id;
         }
@@ -29,23 +32,23 @@ namespace ODC.MdSharp
         /// </summary>
         /// <param name="requestModel"></param>
         /// <returns></returns>
-        public async Task<HttpResponseMessage> GET_GlobalExpressAddress(ExpressRequest.GlobalRequestAddressModel requestModel)
+        public async Task<ExpressRootRecord<GlobalExpressAddressRecord>?> GET_GlobalExpressAddress(ExpressRequest.GlobalRequestAddressModel requestModel)
         {
-            HttpResponseMessage responseMessage;
 
-            string query = BuildRequestQuery(ExpressRequest.Endpoints.Global.GlobalExpressAddress, requestModel);
-
+            string requestURI = BuildRequestQuery(ExpressRequest.Endpoints.Global.GlobalExpressAddress, requestModel);
             try
             {
-                responseMessage = await client.GetAsync(query, HttpCompletionOption.ResponseHeadersRead, CancellationToken.None);
+                using HttpResponseMessage responseMessage = await client.GetAsync(requestURI, cts.Token);
+                // if requestPostal.Format == XML or JSON => ToDo:
+                var result = await responseMessage.Content.ReadFromJsonAsync<ExpressRootRecord<GlobalExpressAddressRecord>>();
+                return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //Http Exceptions are handled by Polly
-                //Debug, bad registration of service could lead to exception or outdated URIs. Considering to use additional service to keep baseURI up to date and health checks
-                throw new Exception(ex.Message);
+                //Keep Service Alive
+                return null;
             }
-            return responseMessage;
+
         }
         /// <summary>
         /// Maybe static
