@@ -39,7 +39,7 @@ if (firstResult != null && firstResult.ResultCode == "GE05")
     Debug.Write(firstResult);
 }
 ```
-
+### Output:
 ![grafik](https://github.com/odysseyofcoding/ODC.MdSharp/assets/74965926/0de17268-1cf9-4bf0-8bf2-ed49b39e3c46)
 
 #
