@@ -40,7 +40,8 @@ if (firstResult != null && firstResult.ResultCode == "GE05")
 }
 ```
 ### Output:
-![grafik](https://github.com/odysseyofcoding/ODC.MdSharp/assets/74965926/0de17268-1cf9-4bf0-8bf2-ed49b39e3c46)
+![grafik](https://github.com/odysseyofcoding/ODC.MdSharp/assets/74965926/bedd039e-33e8-4b07-a4c0-dbbe9bd718fa)
+
 
 #
 
