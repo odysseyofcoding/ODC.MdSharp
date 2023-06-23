@@ -53,7 +53,7 @@ if (firstResult != null && firstResult.ResultCode == "GE05")
 
 ### I will probably refactor the code. For example, I am considering using Interfaces instead of Generics and some other little things that could be a better practice.
 
-If you have any questions regarding this project, contact me via the contact owner button at https://www.nuget.org/packages/Xdroid.MyFirstNuget
+If you have any questions regarding this project, contact me via https://www.nuget.org/packages/ODC.HelloWorld/0.0.1/ContactOwners
 <br/>
 <br/>
 
