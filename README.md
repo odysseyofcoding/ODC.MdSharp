@@ -9,11 +9,10 @@
 ### Parts of the documentation from MelissaWiki® will be reflected in summaries to provide a smooth coding.
 
 ### Feel free to copy the code and to build your own version out of it.
-<br/>
+
 ### I will probably refactor the code. For example, I am considering using Interfaces instead of Generics and some other little things that could be a better practice.
-<br/>
-### If you have any questions, contact me via the <a href="https://www.nuget.org/packages/Xdroid.MyFirstNuget" target="_blank">contact owner button on the nuget.org page</a>
-<br/>
+
+### If you have any questions, contact me via contact owner button at https://www.nuget.org/packages/Xdroid.MyFirstNuget
 
 # Roadmap for MdSharp.Types
 <ul>
