@@ -49,7 +49,7 @@
                 /// <summary/>
                 JSON,
                 /// <summary/>
-                XML
+                XML_NotSupportetYetByMdSharp
             }
             /// <summary>required to avoid bad requests</summary>
             public string SearchTerm { get; set; } = string.Empty;

@@ -23,10 +23,13 @@ namespace ODC.MdSharp
         /// </summary>
         public MdClientService(IHttpClientFactory clientFactory, string id, CancellationToken ctx)
         {
-            this.client = clientFactory.CreateClient("expressEntry");
+            this.client = clientFactory.CreateClient("Global");
+            client.BaseAddress = new Uri("https://expressentry.melissadata.net/web/");
+
             this.cts = CancellationTokenSource.CreateLinkedTokenSource(ctx);
             this.id = id;
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -39,14 +42,13 @@ namespace ODC.MdSharp
             try
             {
                 using HttpResponseMessage responseMessage = await client.GetAsync(requestURI, cts.Token);
-                // if requestPostal.Format == XML or JSON => ToDo:
+                // if Format == XML or JSON => ToDo:
                 var result = await responseMessage.Content.ReadFromJsonAsync<ExpressRootRecord<GlobalExpressAddressRecord>>();
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Keep Service Alive
-                return null;
+                throw new NotImplementedException("Possibly not connected", ex);
             }
 
         }
