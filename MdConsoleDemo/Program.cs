@@ -33,7 +33,7 @@ namespace MdConsoleDemo
             //display
             if (firstResult != null && firstResult.ResultCode == "GE05")
             {
-                Debug.Write(firstResult);
+                Console.WriteLine(firstResult);
             }
 
         }
