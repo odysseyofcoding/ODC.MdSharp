@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /ODC.MdSharpTests/testsettings.json
 /MdSharpTests/appsettings.json
+/MdConsoleDemo/appsettings.json
