@@ -3,7 +3,6 @@
 namespace ODC.MdSharp.Types.GlobalExpressEntry.Global
 {
     /// <summary>
-    ///     <remarks>
     ///         <para>
     ///             Visit <seealso href="https://wiki.melissadata.com/index.php?title=Express_Entry:GlobalExpressAddress">MelissaWiki GlobalExpressAddress</seealso> for further Informations
     ///         </para>
@@ -11,7 +10,6 @@ namespace ODC.MdSharp.Types.GlobalExpressEntry.Global
     ///             Contains an Array of <see cref="Address"/> records which has the nullable Field <see cref="Extras"/>.<br/>
     ///             Please check Extras for null before accessing this property.<br/>
     ///         </para>
-    ///     </remarks>
     ///     Note: Responses are Encoded in UTF-8
     /// </summary>
     public record GlobalExpressAddressRecord([property: JsonPropertyName("Address")] GlobalExpressAddressRecord.Address AddressSuggestion)

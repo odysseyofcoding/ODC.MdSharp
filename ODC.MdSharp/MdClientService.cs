@@ -19,7 +19,7 @@ namespace ODC.MdSharp
         private const string Delimiter = "&{0}={1}";
         private readonly StringBuilder str = new();
         /// <summary>
-        /// ToDo: Research for a web resource to fetch up to date URIs
+        /// ToDo: Add description
         /// </summary>
         public MdClientService(IHttpClientFactory clientFactory, string id, CancellationToken ctx)
         {
@@ -30,9 +30,7 @@ namespace ODC.MdSharp
             this.id = id;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary/>
         /// <param name="requestModel"></param>
         /// <returns></returns>
         public async Task<ExpressRootRecord<GlobalExpressAddressRecord>?> GET_GlobalExpressAddress(ExpressRequest.GlobalRequestAddressModel requestModel)
