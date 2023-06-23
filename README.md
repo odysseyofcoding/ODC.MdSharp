@@ -5,6 +5,8 @@
 ### This is not going to be a production demo because it will not include any ui cleansing nor traffic handling services or further middlewares. In my scenario, Polly will handle as a registered service Http Exceptions.
 
 ### It is dedicated to my own educational benefit and for other developers who are considering to implement a Web Service for Address Validation and those who like to build a prototype in about 5 lines of code.
+
+### Notice: Screenshot is from kickoff-template, namings are different in this Repo. I will update it from time to time. It is a project, nobody asked for.
  
 ![OneMinuteImplementation](https://github.com/odysseyofcoding/ODC.MdSharp/assets/74965926/051fca64-b267-479c-86c2-6680f10c7e5f)
 
