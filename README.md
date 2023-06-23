@@ -6,7 +6,7 @@
 
 ### It is dedicated to my own educational benefit and for other developers who are considering to implement a Web Service for Address Validation and those who like to build a prototype in about 5 lines of code.
 
-### Parts of the documentation from MelissaWiki will be reflected in summaries to provide a smooth coding.
+### Parts of the documentation from MelissaWiki® will be reflected in summaries to provide a smooth coding.
 <br/>
 <br/>
 
