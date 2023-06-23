@@ -21,7 +21,7 @@ namespace MdSharpTests
 
             var services = new ServiceCollection();
 
-            services.AddHttpClient("expressEntry", client =>
+            services.AddHttpClient("Global", client =>
             {
                 client.BaseAddress = new Uri("https://expressentry.melissadata.net/web/");
             }).AddPolicyHandler(GetRetryPolicy());
