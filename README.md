@@ -1,13 +1,18 @@
 # Welcome to project MdSharp
 
-### The focus of this project is to wrap Melissa® API Cloud Services and to demonstrate the implementation of this library into a Blazor Server Project as well as a Console Application using "Microsoft.Hosting".
+### The focus of this project is to wrap Melissa® API Cloud Services and to demonstrate the implementation of this library into a .NET7 Blazor Server Project as well as a Console Application using "Microsoft.Hosting".
 
 ### This is not going to be a production demo because it will not include any ui cleansing nor traffic handling services or further middlewares. In my scenario, Polly will handle as a registered service Http Exceptions.
 
 ### It is dedicated to my own educational benefit and for other developers who are considering to implement a Web Service for Address Validation and those who like to build a prototype in about 5 lines of code.
 
 ### Parts of the documentation from MelissaWiki® will be reflected in summaries to provide a smooth coding.
+
+### Feel free to copy the code and to build your own version out of it.
 <br/>
+### I will probably refactor the code. For example, I am considering using Interfaces instead of Generics and some other little things that could be a better practice.
+<br/>
+### If you have any questions, contact me via the <a href="https://www.nuget.org/packages/Xdroid.MyFirstNuget" target="_blank">contact owner button on the nuget.org page</a>
 <br/>
 
 # Roadmap for MdSharp.Types
