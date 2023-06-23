@@ -6,11 +6,39 @@
 
 ### It is dedicated to my own educational benefit and for other developers who are considering to implement a Web Service for Address Validation and those who like to build a prototype in about 5 lines of code.
 
-### Notice: Screenshot is from kickoff-template, namings are different in this Repo. I will update it from time to time. It is a project, nobody asked for.
+1.  Add YourSecrets File to project and change in settings => copy to outputfolder
+```csharp
+MdClientService clientService;
+IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("AppSettings.json").Build();
+var mdClientServiceCollection = new ServiceCollection();
+```
+2. Add typed client, customize Exception policies as you like
+```csharp
+mdClientServiceCollection.AddHttpClient("Global", client => { }).AddPolicyHandler(GetRetryPolicy());
+
+mdClientServiceCollection.AddSingleton(provider => new MdClientService(provider.GetRequiredService<IHttpClientFactory>(), configuration["x:ApiKey"]!, CancellationToken.None));
+```
+3. build
+```csharp
+var mdClientServiceProvider = mdClientServiceCollection.BuildServiceProvider();
+clientService = mdClientServiceProvider.GetRequiredService<MdClientService>();
+```
+
+4. Get your first result
+```csharp
+var globalExpressRequestModel = new ExpressRequest.GlobalRequestAddressModel("DE", ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, "Haupt") { Locality = "Berlin" };
+var firstResult = await _clientService.GET_GlobalExpressAddress(globalExpressRequestModel);
+```
+
+5. Print, we are expecting General Error Code 05 from the API - No valid key, check your key
+```csharp
+if (firstResult != null && firstResult.ResultCode == "GE05
+{
+    Debug.Write(firstResult);
+}
+```
+### Note: I will update it from time to time. It is a project, nobody asked for.
  
-![OneMinuteImplementation](https://github.com/odysseyofcoding/ODC.MdSharp/assets/74965926/051fca64-b267-479c-86c2-6680f10c7e5f)
-
-
 ### Parts of the documentation from MelissaWiki® will be reflected in summaries to provide a smooth coding.
 
 ### Feel free to copy the code and to build your own version out of it.
