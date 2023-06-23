@@ -4,7 +4,7 @@ The focus of this project is to wrap Melissa® API Cloud Services and to demonst
 
 This is not going to be a production demo because it will not include any ui cleansing nor traffic handling services or further middlewares. In my scenario, Polly will handle as a registered service Http Exceptions.
 
-It is dedicated to my own educational benefit and for other developers who are considering to implement a Web Service for Address Validation and those who like to build a prototype in about 5 lines of code.
+It is dedicated to my own educational benefit and for other developers who are considering to implement a Web Service for Address Validation and those who like to build a prototype in about 10 lines of code.
 
 # Console Example
 
@@ -39,6 +39,10 @@ if (firstResult != null && firstResult.ResultCode == "GE05")
     Debug.Write(firstResult);
 }
 ```
+### Output:
+![grafik](https://github.com/odysseyofcoding/ODC.MdSharp/assets/74965926/bedd039e-33e8-4b07-a4c0-dbbe9bd718fa)
+
+
 #
 
 ### Note: I will update it from time to time. It is a project, nobody asked for.
