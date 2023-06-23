@@ -12,7 +12,9 @@
 
 ### I will probably refactor the code. For example, I am considering using Interfaces instead of Generics and some other little things that could be a better practice.
 
-### If you have any questions, contact me via contact owner button at https://www.nuget.org/packages/Xdroid.MyFirstNuget
+### If you have any questions, contact me via the contact owner button at https://www.nuget.org/packages/Xdroid.MyFirstNuget
+<br/>
+<br/>
 
 # Roadmap for MdSharp.Types
 <ul>
