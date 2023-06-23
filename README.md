@@ -4,7 +4,7 @@ The focus of this project is to wrap Melissa® API Cloud Services and to demonst
 
 This is not going to be a production demo because it will not include any ui cleansing nor traffic handling services or further middlewares. In my scenario, Polly will handle as a registered service Http Exceptions.
 
-It is dedicated to my own educational benefit and for other developers who are considering to implement a Web Service for Address Validation and those who like to build a prototype in about 5 lines of code.
+It is dedicated to my own educational benefit and for other developers who are considering to implement a Web Service for Address Validation and those who like to build a prototype in about 10 lines of code.
 
 # Console Example
 
