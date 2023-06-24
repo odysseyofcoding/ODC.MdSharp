@@ -55,7 +55,7 @@ if (firstResult != null && firstResult.ResultCode == "GE05")
 
 If you have any questions regarding this project, contact me via: https://www.nuget.org/packages/ODC.HelloWorld/0.0.1/ContactOwners
 
-If you have any questions regarding the Web Servie provided by melissa®, you can visit: https://melissa.com/
+If you have any questions regarding the Web Service provided by melissa®, you can visit: https://melissa.com/
 <br/>
 <br/>
 
