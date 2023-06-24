@@ -1,6 +1,6 @@
 # Welcome to project MdSharp
 
-The focus of this project is to wrap Melissa® API Cloud Services and to demonstrate the implementation of this library into a .NET7 Blazor Server Project as well as a Console Application using "Microsoft.Hosting".
+The focus of this project is to wrap melissa® API Cloud Services and to demonstrate the implementation of this library into a .NET7 Blazor Server Project as well as a Console Application using "Microsoft.Hosting".
 
 This is not going to be a production demo because it will not include any ui cleansing nor traffic handling services or further middlewares. In my scenario, Polly will handle as a registered service Http Exceptions.
 
@@ -10,7 +10,7 @@ It is dedicated to my own educational benefit and for other developers who are c
 
 1.  Add YourSecrets File to project and change in settings => copy to outputfolder
 ```csharp
-MdClientService clientService;
+MdClientService _clientService;
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("AppSettings.json").Build();
 var mdClientServiceCollection = new ServiceCollection();
 ```
@@ -23,7 +23,7 @@ mdClientServiceCollection.AddSingleton(provider => new MdClientService(provider.
 3. build
 ```csharp
 var mdClientServiceProvider = mdClientServiceCollection.BuildServiceProvider();
-clientService = mdClientServiceProvider.GetRequiredService<MdClientService>();
+_clientService = mdClientServiceProvider.GetRequiredService<MdClientService>();
 ```
 
 4. Get your first result
@@ -32,7 +32,7 @@ var globalExpressRequestModel = new ExpressRequest.GlobalRequestAddressModel("DE
 var firstResult = await _clientService.GET_GlobalExpressAddress(globalExpressRequestModel);
 ```
 
-5. Print, we are expecting General Error Code 05 from the API - No valid key
+5. Print, we are expecting General Error Code 05 from the API - invalid key
 ```csharp
 if (firstResult != null && firstResult.ResultCode == "GE05")
 {
@@ -53,7 +53,9 @@ if (firstResult != null && firstResult.ResultCode == "GE05")
 
 ### I will probably refactor the code. For example, I am considering using Interfaces instead of Generics and some other little things that could be a better practice.
 
-If you have any questions regarding this project, contact me via https://www.nuget.org/packages/ODC.HelloWorld/0.0.1/ContactOwners
+If you have any questions regarding this project, contact me via: https://www.nuget.org/packages/ODC.HelloWorld/0.0.1/ContactOwners
+
+If you have any questions regarding the Web Servie provided by melissa®, you can visit: https://melissa.com/
 <br/>
 <br/>
 
