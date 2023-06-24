@@ -47,7 +47,7 @@ if (firstResult != null && firstResult.ResultCode == "GE05")
 
 ### Note: I will update it from time to time. It is a project, nobody asked for.
  
-### Parts of the documentation from MelissaWiki® will be reflected in summaries to provide a smooth coding.
+### Parts of the documentation from the Wiki by melissa® will be reflected in summaries to provide a smooth coding.
 
 ### Feel free to copy the code and to build your own version out of it.
 
