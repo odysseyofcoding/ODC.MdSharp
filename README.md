@@ -1,4 +1,4 @@
-# Welcome to project MdSharp
+# Welcome to project MdSharp - Concept -
 
 The focus of this project is to wrap melissa® API Cloud Services and to demonstrate the implementation of this library into a .NET7 Blazor Server Project as well as a Console Application using "Microsoft.Hosting".
 
