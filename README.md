@@ -38,7 +38,7 @@ var firstResult = await _clientService.GET_GlobalExpressAddress(globalExpressReq
             {
                 switch (firstResult.ResultCode)
                 {
-                    case "GE05": await Console.Out.WriteLineAsync(firstResult.ToString()); break;
+                    case "GE05": Debug.WriteLine(firstResult); break;
                     case "XS01": /*DO SOMETHING*/; break;
                     case "XS02": /*DO SOMETHING DIFFERENT*/; break;
                     case "XS03": /*DO SOMETHING DIFFERENT*/; break;

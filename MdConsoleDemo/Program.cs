@@ -5,6 +5,7 @@ using Polly.Extensions.Http;
 using Polly;
 using ODC.MdSharp.RequestModels.GlobalExpressEntry;
 using System.Net.Http.Headers;
+using System.Diagnostics;
 
 namespace MdConsoleDemo
 {
@@ -40,7 +41,7 @@ namespace MdConsoleDemo
             {
                 switch (firstResult.ResultCode)
                 {
-                    case "GE05": await Console.Out.WriteLineAsync(firstResult.ToString()); break;
+                    case "GE05": Debug.WriteLine(firstResult); break;
                     case "XS01": /*DO SOMETHING*/; break;
                     case "XS02": /*DO SOMETHING DIFFERENT*/; break;
                     case "XS03": /*DO SOMETHING DIFFERENT*/; break;
