@@ -57,22 +57,36 @@ namespace MdSharpTests
                 };
 
                 var e = await mdClientService.GET_GlobalExpressAddress(requestGlobalAddress);
-
+                //TODO: Add ResultCodeResolver to project
                 if (e != null)
                 {
-                    records.Add(e);
-
-                    Debug.WriteLine(e.ResultCode);
+                    switch (e.ResultCode)
+                    {
+                        case "GE05":
+                            Debug.WriteLine(e);
+                            Assert.True(e.Results != null);
+                            records.Add(e);
+                            break;
+                        case "XS01":
+                            Assert.True(true);
+                            Assert.True(e.Results != null) /*DO SOMETHING*/;
+                            break;
+                        case "XS02":
+                            Assert.True(e.Results != null)/*DO SOMETHING DIFFERENT*/;
+                            break;
+                        case "XS03":
+                            Assert.True(e.Results != null)/*DO SOMETHING DIFFERENT*/;
+                            break;
+                        default: throw new NotImplementedException("No ResultCode catched"); // TODO: Result Code coverage 
+                    }
                 }
                 else
                 {
                     Debug.WriteLine("Something went wrong, even with polly");
+                    Assert.True(false);
                 }
-
-
             }
 
-            Assert.True(true);
 
             //records.ForEach(rec =>
             //{
