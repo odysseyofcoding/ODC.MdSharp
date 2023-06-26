@@ -4,7 +4,6 @@ using ODC.MdSharp;
 using Polly.Extensions.Http;
 using Polly;
 using ODC.MdSharp.RequestModels.GlobalExpressEntry;
-using System.Diagnostics;
 using System.Net.Http.Headers;
 
 namespace MdConsoleDemo
@@ -33,7 +32,7 @@ namespace MdConsoleDemo
             _clientService = mdClientServiceProvider.GetRequiredService<MdClientService>();
 
             //3. build query
-            var globalExpressRequestModel = new ExpressRequest.GlobalRequestAddressModel("DE", ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, "Haupt") { Locality = "Berlin" };
+            var globalExpressRequestModel = new ExpressRequest.GlobalRequestAddressModel(MdClientService.CountryISO2.DE, ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, "Haupt") { Locality = "Berlin" };
             //send
             var firstResult = await _clientService.GET_GlobalExpressAddress(globalExpressRequestModel);
 
