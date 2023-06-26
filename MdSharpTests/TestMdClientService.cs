@@ -7,6 +7,7 @@ using System.Diagnostics;
 using ODC.MdSharp.Types.GlobalExpressEntry.Global;
 using ODC.MdSharp.Types.GlobalExpressEntry;
 using ODC.MdSharp.RequestModels.GlobalExpressEntry;
+using System.Diagnostics.SymbolStore;
 
 namespace MdSharpTests
 {
@@ -49,7 +50,7 @@ namespace MdSharpTests
 
             for (int i = 0; i < queries.Length; i++)
             {
-                ExpressRequest.GlobalRequestAddressModel requestGlobalAddress = new(country: "de", ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, searchTerm: queries[i])
+                ExpressRequest.GlobalRequestAddressModel requestGlobalAddress = new(country: MdClientService.CountryISO2.DE, ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, searchTerm: queries[i])
                 {
                     Locality = "Köln",
                     PostalCode = "51103",

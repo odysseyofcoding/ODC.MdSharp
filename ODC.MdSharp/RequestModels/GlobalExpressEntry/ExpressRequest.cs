@@ -5,43 +5,9 @@
     /// </summary>
     public class ExpressRequest
     {
-        /// <summary/>
-        public class Endpoints
-        {
-            /// <summary/>
-            public class Global
-            {
-                /// <summary/>
-                public const string GlobalExpressCountry = nameof(GlobalExpressCountry);
-                /// <summary/>
-                public const string GlobalExpressAddress = nameof(GlobalExpressAddress);
-                /// <summary/>
-                public const string GlobalExpressFreeForm = nameof(GlobalExpressFreeForm);
-                /// <summary/>
-                public const string GlobalExpressPostalCode = nameof(GlobalExpressPostalCode);
-                /// <summary/>
-                public const string GlobalExpressThoroughfare = nameof(GlobalExpressThoroughfare);
-                /// <summary/>
-                public const string GlobalExpressLocalityAdministrativeArea = nameof(GlobalExpressLocalityAdministrativeArea);
-            }
-            /// <summary/>
-            public class US_CAN
-            {
-                /// <summary/>
-                public const string ExpressAddress = nameof(ExpressAddress);
-                /// <summary/>
-                public const string ExpressCityState = nameof(ExpressCityState);
-                /// <summary/>
-                public const string ExpressFreeForm = nameof(ExpressFreeForm);
-                /// <summary/>
-                public const string ExpressPostalCode = nameof(ExpressPostalCode);
-                /// <summary/>
-                public const string ExpressStreet = nameof(ExpressStreet);
-            }
-        }
 
         /// <summary/>
-        public class GlobalRequestAddressModel
+        public class GlobalRequestAddressModel : IRequestExpressEntry
         {
             /// <summary/>
             public enum ValidFormats

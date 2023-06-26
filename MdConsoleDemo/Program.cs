@@ -5,6 +5,7 @@ using Polly.Extensions.Http;
 using Polly;
 using ODC.MdSharp.RequestModels.GlobalExpressEntry;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 
 namespace MdConsoleDemo
 {
@@ -12,17 +13,22 @@ namespace MdConsoleDemo
     {
         static async Task Main()
         {
-            //1Configure
+            // Configure
             MdClientService _clientService;
             IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("AppSettings.json").Build();
             var mdClientServiceCollection = new ServiceCollection();
-            // Adding Polly to handle exceptions
-            mdClientServiceCollection.AddHttpClient("Global", client => { }).AddPolicyHandler(GetRetryPolicy());
+
+            //ReadAsStringAsync should adapt utf-8 for encoding with this assignment - not testet
+            mdClientServiceCollection.AddHttpClient("Global", client =>
+            {
+                client.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));
+                // Adding Polly to handle exceptions
+            }).AddPolicyHandler(GetRetryPolicy());
 
             // Singleton because it is a simple console demo app, no user input or any fancy stuff - consider changing depending your scenario
             mdClientServiceCollection.AddSingleton(provider => new MdClientService(provider.GetRequiredService<IHttpClientFactory>(), configuration["x:ApiKeyError"]!, CancellationToken.None));
 
-            //2. Build and Inject Service
+            // Build and Inject Service
             var mdClientServiceProvider = mdClientServiceCollection.BuildServiceProvider();
             _clientService = mdClientServiceProvider.GetRequiredService<MdClientService>();
 
@@ -30,10 +36,17 @@ namespace MdConsoleDemo
             var globalExpressRequestModel = new ExpressRequest.GlobalRequestAddressModel("DE", ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, "Haupt") { Locality = "Berlin" };
             //send
             var firstResult = await _clientService.GET_GlobalExpressAddress(globalExpressRequestModel);
-            //display
-            if (firstResult != null && firstResult.ResultCode == "GE05")
+
+            if (firstResult is not null)
             {
-                Console.WriteLine(firstResult);
+                switch (firstResult.ResultCode)
+                {
+                    case "GE05": await Console.Out.WriteLineAsync(firstResult.ToString()); break;
+                    case "XS01": /*DO SOMETHING*/; break;
+                    case "XS02": /*DO SOMETHING DIFFERENT*/; break;
+                    case "XS03": /*DO SOMETHING DIFFERENT*/; break;
+                    default: throw new NotImplementedException("No ResultCode catched"); // TODO: Result Code coverage 
+                }
             }
 
         }
