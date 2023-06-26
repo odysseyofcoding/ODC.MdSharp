@@ -28,16 +28,23 @@ clientService = mdClientServiceProvider.GetRequiredService<MdClientService>();
 
 4. Get your first result
 ```csharp
-var globalExpressRequestModel = new ExpressRequest.GlobalRequestAddressModel("DE", ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, "Haupt") { Locality = "Berlin" };
+var globalExpressRequestModel = new ExpressRequest.GlobalRequestAddressModel(MdClientService.CountryISO2.DE, ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, "Haupt") { Locality = "Berlin" };
 var firstResult = await _clientService.GET_GlobalExpressAddress(globalExpressRequestModel);
 ```
 
 5. Print, we are expecting General Error Code 05 from the API - No valid key
 ```csharp
-if (firstResult != null && firstResult.ResultCode == "GE05")
-{
-    Debug.Write(firstResult);
-}
+            if (firstResult is not null)
+            {
+                switch (firstResult.ResultCode)
+                {
+                    case "GE05": await Console.Out.WriteLineAsync(firstResult.ToString()); break;
+                    case "XS01": /*DO SOMETHING*/; break;
+                    case "XS02": /*DO SOMETHING DIFFERENT*/; break;
+                    case "XS03": /*DO SOMETHING DIFFERENT*/; break;
+                    default: throw new NotImplementedException("No ResultCode catched"); // TODO: Result Code coverage 
+                }
+            }
 ```
 ### Output:
 ![grafik](https://github.com/odysseyofcoding/ODC.MdSharp/assets/74965926/bedd039e-33e8-4b07-a4c0-dbbe9bd718fa)
