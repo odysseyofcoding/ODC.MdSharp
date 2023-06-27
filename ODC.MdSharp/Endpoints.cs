@@ -25,31 +25,31 @@ namespace ODC.MdSharp
                     public class Global
                     {
                         /// <summary/>
-                        public const string GlobalExpressCountry = nameof(GlobalExpressCountry);
+                        public const string Country = "GlobalExpressCountry";
                         /// <summary/>
                         public const string Address = "GlobalExpressAddress";
                         /// <summary/>
-                        public const string GlobalExpressFreeForm = nameof(GlobalExpressFreeForm);
+                        public const string FreeForm = "GlobalExpressFreeForm";
                         /// <summary/>
-                        public const string GlobalExpressPostalCode = nameof(GlobalExpressPostalCode);
+                        public const string PostalCode = "GlobalExpressPostalCode";
                         /// <summary/>
-                        public const string GlobalExpressThoroughfare = nameof(GlobalExpressThoroughfare);
+                        public const string Thoroughfare = "GlobalExpressThoroughfare";
                         /// <summary/>
-                        public const string GlobalExpressLocalityAdministrativeArea = nameof(GlobalExpressLocalityAdministrativeArea);
+                        public const string LocalityAdministrativeArea = "GlobalExpressLocalityAdministrativeArea";
                     }
                     /// <summary/>
                     public class US_CAN
                     {
                         /// <summary/>
-                        public const string ExpressAddress = nameof(ExpressAddress);
+                        public const string Address = "ExpressAddress";
                         /// <summary/>
-                        public const string ExpressCityState = nameof(ExpressCityState);
+                        public const string CityState = "ExpressCityState";
                         /// <summary/>
-                        public const string ExpressFreeForm = nameof(ExpressFreeForm);
+                        public const string FreeForm = "ExpressFreeForm";
                         /// <summary/>
-                        public const string ExpressPostalCode = nameof(ExpressPostalCode);
+                        public const string PostalCode = "ExpressPostalCode";
                         /// <summary/>
-                        public const string ExpressStreet = nameof(ExpressStreet);
+                        public const string Street = "ExpressStreet";
                     }
                 }
             }
