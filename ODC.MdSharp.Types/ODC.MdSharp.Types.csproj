@@ -26,6 +26,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Folder Include="GlobalCloudServices\" />
+	  <Folder Include="GlobalExpressEntry\US_CAN\" />
 	  <Folder Include="NorthAmericaCloudServices\" />
 	</ItemGroup>
 </Project>

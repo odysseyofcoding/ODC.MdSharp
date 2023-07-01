@@ -31,11 +31,10 @@ namespace ODC.MdSharp
             this.cts = CancellationTokenSource.CreateLinkedTokenSource(ctx);
             this.id = id;
         }
-
         /// <summary/>
         /// <param name="requestModel"></param>
         /// <returns></returns>
-        public async Task<ExpressRootRecord<GlobalExpressAddressRecord>> GET_GlobalExpressAddress(ExpressRequest.GlobalRequestAddressModel requestModel)
+        public async Task<GlobalExpressResponse> GET_GlobalExpressAddress(ExpressRequest.GlobalRequestAddressModel requestModel)
         {
 
             string requestURI = BuildRequestQuery(MdEnpoints.GlobalCloudServices.ExpressEntry.Global.Address, requestModel);
@@ -45,9 +44,19 @@ namespace ODC.MdSharp
             responseMessage.EnsureSuccessStatusCode();
 
             // if Format == XML or JSON => ToDo:
-            var result = await responseMessage.Content.ReadFromJsonAsync<ExpressRootRecord<GlobalExpressAddressRecord>>();
+            var result = await responseMessage.Content.ReadFromJsonAsync<GlobalExpressResponse>();
 
             return result is not null ? result : throw new NotImplementedException("alpha version - please check type of exception");
+        }
+        /// <summary/>
+        public async Task<GlobalExpressResponse> GET_GlobalExpressLocalityAdministrativeArea(ExpressRequest.GlobalRequestLocalityAdministrativeArea requestModel)
+        {
+            string requestURI = BuildRequestQuery(MdEnpoints.GlobalCloudServices.ExpressEntry.Global.LocalityAdministrativeArea, requestModel);
+            using HttpResponseMessage responseMessage = await client.GetAsync(requestURI, cts.Token);
+            responseMessage.EnsureSuccessStatusCode();
+            var result = await responseMessage.Content.ReadFromJsonAsync<GlobalExpressResponse>();
+            return result is not null ? result : throw new NotImplementedException("alpha version - please check type of exception");
+
         }
         /// <summary>
         /// Maybe static
@@ -73,7 +82,7 @@ namespace ODC.MdSharp
 
             List<PropertyInfo> props = new();
             //TODO: add interfaces for request models
-            if (requestModel is IRequestExpressEntry)
+            if (requestModel is IRequestExpressFreeForm)
             {
                 //[Deprecated] with interfaces
                 searchTerm = properties.Where(p => p.Name == "SearchTerm").First().GetValue(requestModel)!.ToString()!;
@@ -84,7 +93,7 @@ namespace ODC.MdSharp
             else
             {
                 props = properties.Where(y => y.Name != "Format").ToList();
-                throw new NotImplementedException("Interfaces coming soon! Different conditions for some requests");
+                //throw new NotImplementedException("Interfaces coming soon! Different conditions for some requests");
             }
 
             props.ToList().ForEach(property =>

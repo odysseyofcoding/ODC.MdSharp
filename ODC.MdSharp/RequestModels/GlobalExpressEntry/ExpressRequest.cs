@@ -5,9 +5,8 @@
     /// </summary>
     public class ExpressRequest
     {
-
         /// <summary/>
-        public class GlobalRequestAddressModel : IRequestExpressEntry
+        public class GlobalRequestAddressModel : IRequestExpressFreeForm
         {
             /// <summary/>
             public enum ValidFormats
@@ -76,6 +75,37 @@
                 Cols = cols;
                 Format = format.ToString();
             }
+        }
+        /// <summary/>
+        public class GlobalRequestLocalityAdministrativeArea
+        {
+            /// <summary/>
+            public enum ValidFormats
+            {
+                /// <summary/>
+                JSON,
+                /// <summary/>
+                XML_NotSupportetYetByMdSharp
+            }
+            /// <summary/>
+            public string Format { get; set; } = string.Empty;
+            /// <summary/>
+            public string? Locality { get; set; } = string.Empty;
+            /// <summary/>
+            public string? PostalCode { get; set; } = string.Empty;
+            /// <summary/>
+            public string Country { get; set; } = string.Empty;
+            /// <summary/>
+            public int Maxrecords { get; set; } = 10;
+            /// <summary/>
+            public bool? NativeCharset { get; set; }
+            /// <summary/>
+            public GlobalRequestLocalityAdministrativeArea(ValidFormats format, string locality)
+            {
+                Format = format.ToString();
+                Locality = locality;
+            }
+
         }
     }
 }

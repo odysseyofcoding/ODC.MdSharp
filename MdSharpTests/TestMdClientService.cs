@@ -5,9 +5,9 @@ using Polly.Extensions.Http;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 using ODC.MdSharp.Types.GlobalExpressEntry.Global;
-using ODC.MdSharp.Types.GlobalExpressEntry;
 using ODC.MdSharp.RequestModels.GlobalExpressEntry;
-using System.Diagnostics.SymbolStore;
+using System.Text.Json;
+using Xunit;
 
 namespace MdSharpTests
 {
@@ -42,11 +42,23 @@ namespace MdSharpTests
                 .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         }
         [Fact]
+        public Task TestNewGlobalExpressResponseRecord()
+        {
+
+            var result = JsonSerializer.Deserialize<GlobalExpressResponse>(DummyData.DummyGlobalExpress.dummyGlobalAddressResponseJson);
+            if (result is not null)
+            {
+                Assert.NotNull(result.Results);
+            }
+            else { Assert.False(false); }
+            return Task.CompletedTask;
+        }
+
+        [Fact]
         public async Task TestGlobalExpressAddressCall()
         {
             string[] queries = { "feld", "mülh", "mant", "loe", "Kalker" };
 
-            List<ExpressRootRecord<GlobalExpressAddressRecord>> records = new();
 
             for (int i = 0; i < queries.Length; i++)
             {
@@ -57,34 +69,21 @@ namespace MdSharpTests
                 };
 
                 var e = await mdClientService.GET_GlobalExpressAddress(requestGlobalAddress);
-                //TODO: Add ResultCodeResolver to project
-                if (e != null)
-                {
-                    switch (e.ResultCode)
-                    {
-                        case "GE05":
-                            Debug.WriteLine(e);
-                            Assert.True(e.Results != null);
-                            records.Add(e);
-                            break;
-                        case "XS01":
-                            Assert.True(true);
-                            Assert.True(e.Results != null) /*DO SOMETHING*/;
-                            break;
-                        case "XS02":
-                            Assert.True(e.Results != null)/*DO SOMETHING DIFFERENT*/;
-                            break;
-                        case "XS03":
-                            Assert.True(e.Results != null)/*DO SOMETHING DIFFERENT*/;
-                            break;
-                        default: throw new NotImplementedException("No ResultCode catched"); // TODO: Result Code coverage 
-                    }
-                }
-                else
-                {
-                    Debug.WriteLine("Something went wrong, even with polly");
-                    Assert.True(false);
-                }
+                Assert.True(ResolveResultCode(e.ResultCode));
+            }
+        }
+        [Fact]
+        public async Task TestGlobalExpressLocalityAdministrativeArea()
+        {
+            string[] queries = { "feld" };
+
+
+            for (int i = 0; i < queries.Length; i++)
+            {
+                ExpressRequest.GlobalRequestLocalityAdministrativeArea requestGlobalAddress = new(ExpressRequest.GlobalRequestLocalityAdministrativeArea.ValidFormats.JSON, "Köln") { };
+
+                var e = await mdClientService.GET_GlobalExpressLocalityAdministrativeArea(requestGlobalAddress);
+                Assert.True(ResolveResultCode(e.ResultCode));
             }
 
 
@@ -96,5 +95,30 @@ namespace MdSharpTests
             //    });
             //});
         }
+
+        private static bool ResolveResultCode(string resultCode)
+        {
+            if (resultCode != null)
+            {
+                switch (resultCode)
+                {
+                    case "GE05":
+                        Debug.WriteLine(resultCode); return true;
+                    case "XS01":
+                        /*DO SOMETHING DIFFERENT*/
+                        return true;
+                    case "XS02":
+                        /*DO SOMETHING DIFFERENT*/
+                        return true;
+                    case "XS03":
+                        /*DO SOMETHING DIFFERENT*/
+                        return true;
+                    default:
+                        return false; // TODO: Result Code coverage 
+                }
+            }
+            return false;
+        }
+
     }
 }

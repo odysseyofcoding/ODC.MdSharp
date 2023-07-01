@@ -3,7 +3,7 @@
     /// <summary>
     /// To keep Requests easier apart
     /// </summary>
-    public interface IRequestExpressEntry
+    public interface IRequestExpressFreeForm
     {
         /// <summary/>
         public enum ValidFormats { };
