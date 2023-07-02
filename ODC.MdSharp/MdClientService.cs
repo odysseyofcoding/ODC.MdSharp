@@ -85,9 +85,9 @@ namespace ODC.MdSharp
             if (requestModel is IRequestExpressFreeForm)
             {
                 //[Deprecated] with interfaces
-                searchTerm = properties.Where(p => p.Name == "SearchTerm").First().GetValue(requestModel)!.ToString()!;
+                searchTerm = properties.Where(p => p.Name == "Address1").First().GetValue(requestModel)!.ToString()!;
                 str.Append("&address1=" + searchTerm);
-                var liftedList = properties.Where(x => x.Name != "SearchTerm" && x.Name != "Format");
+                var liftedList = properties.Where(x => x.Name != "Address1" && x.Name != "Format");
                 props = liftedList.ToList();
             }
             else

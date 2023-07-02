@@ -60,12 +60,11 @@ namespace MdSharpTests
 
             for (int i = 0; i < queries.Length; i++)
             {
-                ExpressRequest.GlobalRequestAddressModel requestGlobalAddress = new(country: MdClientService.CountryISO2.DE, ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, searchTerm: queries[i])
+                ExpressRequest.GlobalRequestAddressModel requestGlobalAddress = new(country: "DE", format: ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, queries[0])
                 {
                     Locality = "Köln",
                     PostalCode = "51103",
                 };
-
                 var e = await mdClientService.GET_GlobalExpressAddress(requestGlobalAddress);
                 Assert.True(ResolveExpressEntryResultCode(e.ResultCode));
             }
