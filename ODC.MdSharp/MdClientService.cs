@@ -49,6 +49,23 @@ namespace ODC.MdSharp
             return result is not null ? result : throw new NotImplementedException("alpha version - please check type of exception");
         }
         /// <summary/>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
+        public async Task<GlobalExpressResponse> GET_GlobalExpressAddressFreeForm(ExpressRequest.GlobalRequestAddressFreeFormModel requestModel)
+        {
+
+            string requestURI = BuildRequestQuery(MdEnpoints.GlobalCloudServices.ExpressEntry.Global.FreeForm, requestModel);
+
+            using HttpResponseMessage responseMessage = await client.GetAsync(requestURI, cts.Token);
+
+            responseMessage.EnsureSuccessStatusCode();
+
+            // if Format == XML or JSON => ToDo:
+            var result = await responseMessage.Content.ReadFromJsonAsync<GlobalExpressResponse>();
+
+            return result is not null ? result : throw new NotImplementedException("alpha version - please check type of exception");
+        }
+        /// <summary/>
         public async Task<GlobalExpressResponse> GET_GlobalExpressLocalityAdministrativeArea(ExpressRequest.GlobalRequestLocalityAdministrativeArea requestModel)
         {
             string requestURI = BuildRequestQuery(MdEnpoints.GlobalCloudServices.ExpressEntry.Global.LocalityAdministrativeArea, requestModel);
@@ -85,9 +102,9 @@ namespace ODC.MdSharp
             if (requestModel is IRequestExpressFreeForm)
             {
                 //[Deprecated] with interfaces
-                searchTerm = properties.Where(p => p.Name == "Address1").First().GetValue(requestModel)!.ToString()!;
-                str.Append("&address1=" + searchTerm);
-                var liftedList = properties.Where(x => x.Name != "Address1" && x.Name != "Format");
+                searchTerm = properties.Where(p => p.Name == "SearchTerm").First().GetValue(requestModel)!.ToString()!;
+                str.Append("&ff=" + searchTerm);
+                var liftedList = properties.Where(x => x.Name != "SearchTerm" && x.Name != "Format");
                 props = liftedList.ToList();
             }
             else

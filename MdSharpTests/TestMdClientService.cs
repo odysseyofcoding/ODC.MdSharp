@@ -60,12 +60,29 @@ namespace MdSharpTests
 
             for (int i = 0; i < queries.Length; i++)
             {
-                ExpressRequest.GlobalRequestAddressModel requestGlobalAddress = new(country: "DE", format: ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, queries[0])
+                ExpressRequest.GlobalRequestAddressModel requestGlobalAddress = new(country: MdClientService.CountryISO2.DE, format: ExpressRequest.GlobalRequestAddressModel.ValidFormats.JSON, queries[0])
                 {
                     Locality = "Köln",
                     PostalCode = "51103",
                 };
                 var e = await mdClientService.GET_GlobalExpressAddress(requestGlobalAddress);
+                Assert.True(ResolveExpressEntryResultCode(e.ResultCode));
+            }
+        }
+        [Fact]
+        public async Task TestGlobalExpressAddressFreeFormCall()
+        {
+            string[] queries = { "feld", "mülh", "mant", "loe", "Kalker" };
+
+
+            for (int i = 0; i < queries.Length; i++)
+            {
+                ExpressRequest.GlobalRequestAddressFreeFormModel requestGlobalAddress = new(country: MdClientService.CountryISO2.DE, format: ExpressRequest.GlobalRequestAddressFreeFormModel.ValidFormats.JSON, queries[0])
+                {
+                    Locality = "Köln",
+                    PostalCode = "51103",
+                };
+                var e = await mdClientService.GET_GlobalExpressAddressFreeForm(requestGlobalAddress);
                 Assert.True(ResolveExpressEntryResultCode(e.ResultCode));
             }
         }
