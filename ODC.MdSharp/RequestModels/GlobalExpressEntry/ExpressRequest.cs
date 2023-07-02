@@ -183,5 +183,72 @@
                 Format = format.ToString();
             }
         }
+        /// <summary/>
+        public class GlobalRequestPostalCode
+        {
+            /// <summary/>
+            public enum ValidFormats
+            {
+                /// <summary/>
+                JSON,
+                /// <summary/>
+                XML_NotSupportetYetByMdSharp
+            }
+            /// <summary/>
+            public string Format { get; set; } = string.Empty;
+            /// <summary/>
+            public string PostalCode { get; set; } = string.Empty;
+            /// <summary/>
+            public string Country { get; set; } = string.Empty;
+            /// <summary/>
+            public int Maxrecords { get; set; } = 10;
+            /// <summary/>
+            public GlobalRequestPostalCode(ValidFormats format, string postalCode, string country, int maxRecords = 10)
+            {
+                Format = format.ToString();
+                PostalCode = postalCode; 
+                Country = country;
+                Maxrecords = maxRecords;
+            }
+        }
+        /// <summary/>
+        public class GlobalRequestThoroughfare
+        {
+            /// <summary/>
+            public enum ValidFormats
+            {
+                /// <summary/>
+                JSON,
+                /// <summary/>
+                XML_NotSupportetYetByMdSharp
+            }
+            /// <summary/>
+            public string Format { get; set; } = string.Empty;
+            /// <summary/>
+            public string Thoroughfare { get; set; } = string.Empty;
+            /// <summary/>
+            public string PostalCode { get; set; } = string.Empty;
+            /// <summary/>
+            public string Country { get; set; } = string.Empty;
+            /// <summary/>
+            public int Maxrecords { get; set; } = 10;
+            /// <summary/>
+            public GlobalRequestThoroughfare(ValidFormats format, string thoroughfare, string country, int maxRecords = 10)
+            {
+                Format = format.ToString();
+                Thoroughfare = thoroughfare;
+                Country = country;
+                Maxrecords = maxRecords;
+            }
+            /// <summary/>
+            public GlobalRequestThoroughfare(ValidFormats format,string thoroughfare, string postalCode, string country, int maxRecords = 10)
+            {
+                Format = format.ToString();
+                Thoroughfare = thoroughfare;
+                PostalCode = postalCode;
+                Country = country;
+                Maxrecords = maxRecords;
+            }
+        }
     }
 }

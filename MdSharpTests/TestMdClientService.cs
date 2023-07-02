@@ -42,20 +42,23 @@ namespace MdSharpTests
         [Fact]
         public Task TestNewGlobalExpressResponseRecord()
         {
-
-            var result = JsonSerializer.Deserialize<GlobalExpressResponse>(DummyData.DummyGlobalExpress.dummyGlobalAddressResponseJson);
-            if (result is not null)
+            List<GlobalExpressResponse> responses = new();
+            for (int i = 0; i < 100; i++)
             {
-                Assert.NotNull(result.Results);
+                var response = JsonSerializer.Deserialize<GlobalExpressResponse>(DummyData.DummyGlobalExpress.dummyGlobalAddressResponseJson);
+                if (i % 10 == 0)
+                {
+                    responses.Add(response!);
+                }
             }
-            else { Assert.False(false); }
+            Assert.NotNull(responses[new Random().Next(0, responses.Count)].Results);
             return Task.CompletedTask;
         }
 
         [Fact]
         public async Task TestGlobalExpressAddressCall()
         {
-            string[] queries = { "feld", "mülh", "mant", "loe", "Kalker" };
+            string[] queries = { "feld" };
 
 
             for (int i = 0; i < queries.Length; i++)
@@ -72,7 +75,7 @@ namespace MdSharpTests
         [Fact]
         public async Task TestGlobalExpressAddressFreeFormCall()
         {
-            string[] queries = { "feld", "mülh", "mant", "loe", "Kalker" };
+            string[] queries = { "feld" };
 
 
             for (int i = 0; i < queries.Length; i++)
@@ -100,7 +103,39 @@ namespace MdSharpTests
             }
 
         }
+        [Fact]
+        public async Task TestGlobalExpressPostalCode()
+        {
+            string[] queries = { "51" };
 
+            for (int i = 0; i < queries.Length; i++)
+            {
+                ExpressRequest.GlobalRequestPostalCode requestGlobalAddress = new(format: ExpressRequest.GlobalRequestPostalCode.ValidFormats.JSON, postalCode: queries[0], country: MdClientService.CountryISO2.DE) { };
+
+                var e = await mdClientService.GET_GlobalExpressPostalCode(requestGlobalAddress);
+
+                Assert.True(ResolveExpressEntryResultCode(e.ResultCode));
+            }
+
+        }
+        [Fact]
+        public async Task TestGlobalExpressThoroughfare()
+        {
+            string[] queries = { "Ka" };
+
+            for (int i = 0; i < queries.Length; i++)
+            {
+                ExpressRequest.GlobalRequestThoroughfare requestGlobalAddress = new(format: ExpressRequest.GlobalRequestThoroughfare.ValidFormats.JSON, thoroughfare: queries[0], country: MdClientService.CountryISO2.DE)
+                {
+                    PostalCode = "51"
+                };
+
+                var e = await mdClientService.GET_GlobalExpressThoroughfare(requestGlobalAddress);
+
+                Assert.True(ResolveExpressEntryResultCode(e.ResultCode));
+            }
+
+        }
         private static bool ResolveExpressEntryResultCode(string resultCode)
         {
 

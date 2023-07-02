@@ -75,6 +75,24 @@ namespace ODC.MdSharp
             return result is not null ? result : throw new NotImplementedException("alpha version - please check type of exception");
 
         }
+        /// <summary/>
+        public async Task<GlobalExpressResponse> GET_GlobalExpressPostalCode(ExpressRequest.GlobalRequestPostalCode requestModel)
+        {
+            string requestURI = BuildRequestQuery(MdEnpoints.GlobalCloudServices.ExpressEntry.Global.PostalCode, requestModel);
+            using HttpResponseMessage responseMessage = await client.GetAsync(requestURI, cts.Token);
+            responseMessage.EnsureSuccessStatusCode();
+            var result = await responseMessage.Content.ReadFromJsonAsync<GlobalExpressResponse>();
+            return result is not null ? result : throw new NotImplementedException("alpha version - please check type of exception");
+        }
+        /// <summary/>
+        public async Task<GlobalExpressResponse> GET_GlobalExpressThoroughfare(ExpressRequest.GlobalRequestThoroughfare requestModel)
+        {
+            string requestURI = BuildRequestQuery(MdEnpoints.GlobalCloudServices.ExpressEntry.Global.Thoroughfare, requestModel);
+            using HttpResponseMessage responseMessage = await client.GetAsync(requestURI, cts.Token);
+            responseMessage.EnsureSuccessStatusCode();
+            var result = await responseMessage.Content.ReadFromJsonAsync<GlobalExpressResponse>();
+            return result is not null ? result : throw new NotImplementedException("alpha version - please check type of exception");
+        }
         /// <summary>
         /// Maybe static
         /// </summary>
@@ -98,10 +116,8 @@ namespace ODC.MdSharp
             str.Append("&id=" + id);
 
             List<PropertyInfo> props = new();
-            //TODO: add interfaces for request models
             if (requestModel is IRequestExpressFreeForm)
             {
-                //[Deprecated] with interfaces
                 searchTerm = properties.Where(p => p.Name == "SearchTerm").First().GetValue(requestModel)!.ToString()!;
                 str.Append("&ff=" + searchTerm);
                 var liftedList = properties.Where(x => x.Name != "SearchTerm" && x.Name != "Format");
@@ -110,7 +126,6 @@ namespace ODC.MdSharp
             else
             {
                 props = properties.Where(y => y.Name != "Format").ToList();
-                //throw new NotImplementedException("Interfaces coming soon! Different conditions for some requests");
             }
 
             props.ToList().ForEach(property =>
@@ -122,7 +137,7 @@ namespace ODC.MdSharp
                     _ = str.AppendFormat(Delimiter, property.Name.ToLower(), propertyValue.ToLower());
                 }
             });
-
+            Debug.WriteLine(str.ToString());
             return str.ToString();
         }
         void IDisposable.Dispose()
