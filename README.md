@@ -49,7 +49,7 @@ var firstResult = await _clientService.GET_GlobalExpressAddress(globalExpressReq
 ### Output:
 ![grafik](https://github.com/odysseyofcoding/ODC.MdSharp/assets/74965926/8b63bbfd-5cc1-4ab4-a33b-bc58feec01f3)
 
-### Output xUnit tests in Debug mode:
+### Output Stringbuilder and result of each request:
 <img src="https://github.com/odysseyofcoding/ODC.MdSharp/assets/74965926/a4047d63-9cbe-4ce5-a6a3-0687a7aa1acd" alt="">
 
 
