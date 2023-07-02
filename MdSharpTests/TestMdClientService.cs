@@ -96,7 +96,7 @@ namespace MdSharpTests
 
             for (int i = 0; i < queries.Length; i++)
             {
-                ExpressRequest.GlobalRequestLocalityAdministrativeArea requestGlobalAddress = new(ExpressRequest.GlobalRequestLocalityAdministrativeArea.ValidFormats.JSON, "Köln") { };
+                ExpressRequest.GlobalRequestLocalityAdministrativeArea requestGlobalAddress = new(ExpressRequest.GlobalRequestLocalityAdministrativeArea.ValidFormats.JSON, "Köln", country: MdClientService.CountryISO2.DE) { };
 
                 var e = await mdClientService.GET_GlobalExpressLocalityAdministrativeArea(requestGlobalAddress);
                 Assert.True(ResolveExpressEntryResultCode(e.ResultCode));

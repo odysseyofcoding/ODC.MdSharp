@@ -105,10 +105,11 @@
             /// <summary/>
             public bool? NativeCharset { get; set; }
             /// <summary/>
-            public GlobalRequestLocalityAdministrativeArea(ValidFormats format, string locality)
+            public GlobalRequestLocalityAdministrativeArea(ValidFormats format, string locality, string country)
             {
                 Format = format.ToString();
                 Locality = locality;
+                Country = country;
             }
 
         }
