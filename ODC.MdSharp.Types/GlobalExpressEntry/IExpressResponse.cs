@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ODC.MdSharp.Types.GlobalExpressEntry.Global
+namespace ODC.MdSharp.Types.GlobalExpressEntry
 {
     /// <summary>
     /// Base Response

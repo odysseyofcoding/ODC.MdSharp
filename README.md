@@ -82,8 +82,10 @@ If you have any questions regarding the Web Service provided by melissa®, you c
 <ul>
     <li>Reflect all Cloud Service Endpoint requests in REST and SOAP if supported for endpoint</li>
     <li>RequestStringbuilder</li>
+    <ul><li>Express Entry - Filtering Responses</li></ul>
     <li>Global Cloud Services</li>
     <li>North American Cloud Services</li>
     <li>Deserializer for XML, JSON Respones</li>
+    <li>Result Codes Resolver</li>
     <li>xUnit Tests</li>
 </ul>

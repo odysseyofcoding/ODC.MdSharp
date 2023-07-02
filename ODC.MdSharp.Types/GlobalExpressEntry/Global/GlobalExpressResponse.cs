@@ -17,7 +17,9 @@ namespace ODC.MdSharp.Types.GlobalExpressEntry.Global
         /// <summary/>
         public record Result([property: JsonPropertyName("Address")] Result.Address AddressSuggestion)
         {
-            /// <summary/>
+            /// <summary>
+            /// Field "Extras" is not typed and returned as object - temporary trade-off
+            /// </summary>
             public record Address
             (
                [property: JsonPropertyName("Address")] string FormattedAddress,

@@ -1,13 +1,12 @@
+using System.Text.Json;
+using System.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
-using ODC.MdSharp;
+using Microsoft.Extensions.Configuration;
 using Polly;
 using Polly.Extensions.Http;
-using Microsoft.Extensions.Configuration;
-using System.Diagnostics;
+using ODC.MdSharp;
 using ODC.MdSharp.Types.GlobalExpressEntry.Global;
 using ODC.MdSharp.RequestModels.GlobalExpressEntry;
-using System.Text.Json;
-using Xunit;
 
 namespace MdSharpTests
 {
@@ -26,7 +25,6 @@ namespace MdSharpTests
             {
                 client.BaseAddress = new Uri("https://expressentry.melissadata.net/web/");
             }).AddPolicyHandler(GetRetryPolicy());
-
 
             services.AddScoped(provider => new MdClientService(provider.GetRequiredService<IHttpClientFactory>(), configuration["AppSettings:ApiKey"]!, CancellationToken.None));
 
@@ -69,7 +67,7 @@ namespace MdSharpTests
                 };
 
                 var e = await mdClientService.GET_GlobalExpressAddress(requestGlobalAddress);
-                Assert.True(ResolveResultCode(e.ResultCode));
+                Assert.True(ResolveExpressEntryResultCode(e.ResultCode));
             }
         }
         [Fact]
@@ -77,47 +75,37 @@ namespace MdSharpTests
         {
             string[] queries = { "feld" };
 
-
             for (int i = 0; i < queries.Length; i++)
             {
                 ExpressRequest.GlobalRequestLocalityAdministrativeArea requestGlobalAddress = new(ExpressRequest.GlobalRequestLocalityAdministrativeArea.ValidFormats.JSON, "Köln") { };
 
                 var e = await mdClientService.GET_GlobalExpressLocalityAdministrativeArea(requestGlobalAddress);
-                Assert.True(ResolveResultCode(e.ResultCode));
+                Assert.True(ResolveExpressEntryResultCode(e.ResultCode));
             }
 
-
-            //records.ForEach(rec =>
-            //{
-            //    rec.Results.ToList().ForEach(rec =>
-            //    {
-            //        File.AppendAllText("../../TestOutput0.txt", JsonSerializer.Serialize(rec, typeof(GlobalExpressAddressRecord), new JsonSerializerOptions() { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }) + Environment.NewLine);
-            //    });
-            //});
         }
 
-        private static bool ResolveResultCode(string resultCode)
+        private static bool ResolveExpressEntryResultCode(string resultCode)
         {
-            if (resultCode != null)
+
+            if (resultCode is null) return false;
+
+            switch (resultCode)
             {
-                switch (resultCode)
-                {
-                    case "GE05":
-                        Debug.WriteLine(resultCode); return true;
-                    case "XS01":
-                        /*DO SOMETHING DIFFERENT*/
-                        return true;
-                    case "XS02":
-                        /*DO SOMETHING DIFFERENT*/
-                        return true;
-                    case "XS03":
-                        /*DO SOMETHING DIFFERENT*/
-                        return true;
-                    default:
-                        return false; // TODO: Result Code coverage 
-                }
+                case "GE05":
+                    Debug.WriteLine(resultCode); return true;
+                case "XS01":
+                    /*DO SOMETHING*/
+                    return true;
+                case "XS02":
+                    /*DO SOMETHING ELSE*/
+                    return true;
+                case "XS03":
+                    /*DO SOMETHING DIFFERENT*/
+                    return true;
+                default:
+                    return false; // TODO: Result Code coverage 
             }
-            return false;
         }
 
     }
