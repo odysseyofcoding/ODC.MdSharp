@@ -47,10 +47,10 @@ var firstResult = await _clientService.GET_GlobalExpressAddress(globalExpressReq
             }
 ```
 ### Output:
-![Alt text](image-2.png)
+
 
 ### Output xUnit tests in Debug mode:
-![xUnit tests](image-1.png)
+
 
 #
 
