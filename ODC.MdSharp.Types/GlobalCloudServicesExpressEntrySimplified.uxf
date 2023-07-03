@@ -1,0 +1,383 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>610</x><y>400</y><w>300</w><h>1400</h></coordinates><panel_attributes>_GlobalExpressAddress_
+-
+
+                "Address": "string",
+                "Address1": "string",
+                "Address2": "string",
+                "Address3": "string",
+                "Address4": "string",
+                "Address5": "string",
+                "Address6": "string",
+                "Address7": "string",
+                "Address8": "string",
+                "Address9": "string",
+                "Address10": "string",
+                "Address11": "string",
+                "Address12": "string",
+                "DeliveryAddress": "string",
+                "DeliveryAddress1": "string",
+                "DeliveryAddress2": "string",
+                "DeliveryAddress3": "string",
+                "DeliveryAddress4": "string",
+                "DeliveryAddress5": "string",
+                "DeliveryAddress6": "string",
+                "DeliveryAddress7": "string",
+                "DeliveryAddress8": "string",
+                "DeliveryAddress9": "string",
+                "DeliveryAddress10": "string",
+                "DeliveryAddress11": "string",
+                "DeliveryAddress12": "string",
+                "CountryName": "string",
+                "ISO3166_2": "string",
+                "ISO3166_3": "string",
+                "ISO3166_N": "string",
+                "SuperAdministrativeArea": "string",
+                "AdministrativeArea": "string",
+                "SubAdministrativeArea": "string",
+                "Locality": "string",
+                "DependentLocality": "string",
+                "DoubleDependentLocality": "string",
+                "Thoroughfare": "string",
+                "DependentThoroughfare": "string",
+                "Building": "string",
+                "Premise": "string",
+                "SubBuilding": "string",
+                "PostalCode": "string",
+                "PostalCodePrimary": "string",
+                "PostalCodeSecondary": "string",
+                "Organization": "string",
+                "PostBox": "string",
+                "Unmatched": "string",
+                "GeneralDelivery": "string",
+                "DeliveryInstallation": "string",
+                "Route": "string",
+                "AdditionalContent": "string",
+                "CountrySubdivisionCode": "string",
+                "MAK": "string",
+                "BaseMAK": "string",
+                "Latitude": "string",
+                "Longitude": "string",
+                "DistanceFromPoint": "string"
+                "Extras": { object }
+
+-
+RequestParams:
+
++ address1: string
++ address2 : string
++ address3 : string
++ Format : enum =&gt; string
++ Locality : string
++ Country : enum ISO2=&gt; string
++ AdministrativeArea : string
++ PostalCode : string
++ Maxrecords : int = 10
++ NativeCharset : bool
++ Opt : string
++ Cols : string
+
+-
+example call:
+
+https://expressentry.melissadata.net/web/
+GlobalExpressAddress
+?format={FORMAT}
+&amp;id={ID}
+&amp;address1={ADDRESS1}
+&amp;locality={LOCALITY}
+&amp;administrativearea={ADMINISTRATIVEAREA}
+&amp;postalcode={POSTALCODE}
+&amp;country={COUNTRY}
+&amp;maxrecords={MAXRECORDS}
+&amp;nativecharset={True|False|(blank)}
+&amp;opt={poboxes:true}
+&amp;cols={gbextras,results}      
+              </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>400</y><w>300</w><h>1240</h></coordinates><panel_attributes>_GlobalExpressLocalityAdministrativeArea_
+-
+
+                "Address": "string",
+                "Address1": "string",
+                "Address2": "string",
+                "Address3": "string",
+                "Address4": "string",
+                "Address5": "string",
+                "Address6": "string",
+                "Address7": "string",
+                "Address8": "string",
+                "Address9": "string",
+                "Address10": "string",
+                "Address11": "string",
+                "Address12": "string",
+                "DeliveryAddress": "string",
+                "DeliveryAddress1": "string",
+                "DeliveryAddress2": "string",
+                "DeliveryAddress3": "string",
+                "DeliveryAddress4": "string",
+                "DeliveryAddress5": "string",
+                "DeliveryAddress6": "string",
+                "DeliveryAddress7": "string",
+                "DeliveryAddress8": "string",
+                "DeliveryAddress9": "string",
+                "DeliveryAddress10": "string",
+                "DeliveryAddress11": "string",
+                "DeliveryAddress12": "string",
+                "CountryName": "string",
+                "ISO3166_2": "string",
+                "ISO3166_3": "string",
+                "ISO3166_N": "string",
+                "SuperAdministrativeArea": "string",
+                "AdministrativeArea": "string",
+                "SubAdministrativeArea": "string",
+                "Locality": "string",
+                "DependentLocality": "string",
+                "DoubleDependentLocality": "string",
+                "Thoroughfare": "string",
+                "DependentThoroughfare": "string",
+                "Building": "string",
+                "Premise": "string",
+                "SubBuilding": "string",
+                "PostalCode": "string",
+                "PostalCodePrimary": "string",
+                "PostalCodeSecondary": "string",
+                "Organization": "string",
+                "PostBox": "string",
+                "Unmatched": "string",
+                "GeneralDelivery": "string",
+                "DeliveryInstallation": "string",
+                "Route": "string",
+                "AdditionalContent": "string",
+                "CountrySubdivisionCode": "string",
+                "MAK": "string",
+                "BaseMAK": "string",
+                "Latitude": "string",
+                "Longitude": "string",
+                "DistanceFromPoint": "string"
+
+-
+RequestParams:
+
++ Format : enum =&gt; string
++ Locality : string
++ Country : enum ISO2=&gt; string
++ PostalCode : string
++ Maxrecords : int = 10
++ NativeCharset : bool
+
+-
+example call:
+
+https://expressentry.melissadata.net/web/
+GlobalExpressLocalityAdministrativeArea
+?format={FORMAT}
+&amp;id={ID}
+&amp;locality={LOCALITY}
+&amp;postalcode={POSTALCODE}
+&amp;country={COUNTRY}
+&amp;maxrecords={MAXRECORDS}
+&amp;nativecharset={true|false}
+              </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>1850</y><w>300</w><h>420</h></coordinates><panel_attributes>_GlobalExpressFreeForm_
+-
+
+ see: GlobalExpressAddress
+
+-
+RequestParams:
+
++ format
++ ff (SearchTerm)
++ country
++ maxrecords : int = 10
++ nativeCharset : bool
++ opt : string
++ cols : string
+
+-
+Example Call:
+
+https://expressentry.melissadata.net/web/
+GlobalExpressFreeForm
+?format={FORMAT}
+&amp;id={ID}
+&amp;ff={FF}
+&amp;country={COUNTRY}
+&amp;maxrecords={MAXRECORDS}
+&amp;nativecharset={True|False|(blank)}
+&amp;opt={poboxes:true}
+&amp;cols={gbextras,results}
+              
+              
+              
+              </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>1700</y><w>300</w><h>340</h></coordinates><panel_attributes>_GlobalExpressPostalCode_
+-
+
+ see: GlobalExpressLocalityAdministrativeArea
+
+-
+_RequestParams_
+
++ format : enum =&gt; string
++ postalcode : string
++ country : string
++ maxrecords : int = 10
+
+-
+_Example call_
+
+https://expressentry.melissadata.net/web/
+GlobalExpressPostalCode
+?format={FORMAT}
+&amp;id={ID}
+&amp;postalcode={POSTALCODE}
+&amp;country={COUNTRY}
+&amp;maxrecords={MAXRECORDS}
+              
+              
+              </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>2100</y><w>300</w><h>370</h></coordinates><panel_attributes>_GlobalExpressThoroughfare_
+-
+
+ see: GlobalExpressLocalityAdministrativeArea
+
+-
+_RequestParams_
+
++ format : enum =&gt; string
++ thoroughfare : string
++ postalcode : string
++ country : string
++ maxrecords : int = 10
+
+-
+_Example Call_
+
+https://expressentry.melissadata.net/web/
+GlobalExpressThoroughfare
+?format={FORMAT}
+&amp;id={ID}
+&amp;thoroughfare={THOROUGHFARE}
+&amp;postalcode={POSTALCODE}
+&amp;maxrecords={MAXRECORDS}
+&amp;country={COUNTRY}
+              
+              
+              </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>2320</y><w>300</w><h>390</h></coordinates><panel_attributes>_Country_
+-
+
+            "Country": "string",
+            "English": "string",
+            "Spanish": "string",
+            "French": "string",
+            "German": "string",
+            "SimplifiedChinese": "string",
+            "Char2ISO": "string",
+            "Char3ISO": "string",
+            "ISONumeric": "string"
+
+-
+RequestParams:
+
++ format : enum =&gt; string
++ country : string =&gt; searchterm
+
+-
+Example call:
+
+https://expressentry.melissadata.net/web/
+GlobalExpressCountry
+?format={FORMAT}
+&amp;id={ID}
+&amp;country={Country Search Term}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>270</y><w>630</w><h>80</h></coordinates><panel_attributes>_ResultGlobal_
+-
+AddressSuggestion : Address
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>270</y><w>580</w><h>80</h></coordinates><panel_attributes>_Result_
+-
+AddressSuggestion : Address
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>400</y><w>280</w><h>270</h></coordinates><panel_attributes>_ExpressPostalCode_
+-
+                "AddressLine1": "string",
+                "City": "string",
+                "CityAccepted": "string",
+                "CityNotAccepted": "string",
+                "State": "string",
+                "PostalCode": "string",
+                "CountrySubdivisionCode": "string",
+                "AddressKey": "string",
+                "SuiteName": "string",
+                "SuiteCount": "string",
+                "SuiteList": "string",
+                "PlusFour": "string",
+                "MAK": "string",
+                "BaseMAK": "string"
+              </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>740</y><w>280</w><h>270</h></coordinates><panel_attributes>_ExpressCityState_
+-
+                "AddressLine1": "string",
+                "City": "string",
+                "CityAccepted": "string",
+                "CityNotAccepted": "string",
+                "State": "string",
+                "PostalCode": "string",
+                "CountrySubdivisionCode": "string",
+                "AddressKey": "string",
+                "SuiteName": "string",
+                "SuiteCount": "string",
+                "SuiteList": "string",
+                "PlusFour": "string",
+                "MAK": "string",
+                "BaseMAK": "string"
+              </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>740</y><w>280</w><h>270</h></coordinates><panel_attributes>_ExpressAddress_
+-
+                "AddressLine1": "string",
+                "City": "string",
+                "CityAccepted": "string",
+                "CityNotAccepted": "string",
+                "State": "string",
+                "PostalCode": "string",
+                "CountrySubdivisionCode": "string",
+                "AddressKey": "string",
+                "SuiteName": "string",
+                "SuiteCount": "string",
+                "SuiteList": "string",
+                "PlusFour": "string",
+                "MAK": "string",
+                "BaseMAK": "string"
+              </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>100</y><w>1240</w><h>150</h></coordinates><panel_attributes>_BaseResponse ExpressEntry Global Cloud Services_
+-
+Version : string
+ResultCode: string
+ErrorString : string
+Results : List&lt;T&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>400</y><w>280</w><h>270</h></coordinates><panel_attributes>_ExpressFreeForm_
+-
+                "AddressLine1": "string",
+                "City": "string",
+                "CityAccepted": "string",
+                "CityNotAccepted": "string",
+                "State": "string",
+                "PostalCode": "string",
+                "CountrySubdivisionCode": "string",
+                "AddressKey": "string",
+                "SuiteName": "string",
+                "SuiteCount": "string",
+                "SuiteList": "string",
+                "PlusFour": "string",
+                "MAK": "string",
+                "BaseMAK": "string"
+              </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>0</x><y>0</y><w>260</w><h>70</h></coordinates><panel_attributes>Only Global and US_CAN Cloud Services
+
+North American Cloud Services not included</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>860</x><y>360</y><w>140</w><h>30</h></coordinates><panel_attributes>"Extras" is the diff</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>1080</y><w>280</w><h>270</h></coordinates><panel_attributes>_ExpressStreet_
+-
+                "AddressLine1": "string",
+                "City": "string",
+                "CityAccepted": "string",
+                "CityNotAccepted": "string",
+                "State": "string",
+                "PostalCode": "string",
+                "CountrySubdivisionCode": "string",
+                "AddressKey": "string",
+                "SuiteName": "string",
+                "SuiteCount": "string",
+                "SuiteList": "string",
+                "PlusFour": "string",
+                "MAK": "string",
+                "BaseMAK": "string"
+              </panel_attributes><additional_attributes></additional_attributes></element></diagram>
