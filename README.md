@@ -92,3 +92,14 @@ If you have any questions regarding the Web Service provided by melissa®, you c
     <li>Result Codes Resolver</li>
     <li>xUnit Tests</li>
 </ul>
+
+# UML | Global Express Entry
+
+Diagram to highlight the essential information regarding responses and requests.
+The overview will be updated to reflect ongoing progress and will be soon moved to the ODC.MdSharp.Types folder.
+You can already find the .uxf file in ODC.MdSharp.Types
+
+![GlobalExpressEntryOverviewPNG](https://github.com/odysseyofcoding/ODC.MdSharp/assets/74965926/fe0c652b-2d33-4be3-96ea-e1dddc4e79ba)
+
+
+
